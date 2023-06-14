@@ -9,5 +9,6 @@ routes.get("/posts/:id", PostController.getPostById);
 routes.post("/posts", PostController.createPost);
 routes.patch("/posts/:id", PostController.updatePost);
 routes.delete("/posts/:id", PostController.deletePost);
+routes.get("/silabas/:word", PostController.syllablesController)
 
 export default routes;

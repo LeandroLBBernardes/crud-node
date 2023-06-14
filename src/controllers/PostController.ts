@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import Post from "../schemas/Post";
+import getWordInfo from "../data/getWordInfo";
 
 class PostController {
   public async getAllPosts(req: Request, res: Response): Promise<Response> {
@@ -86,6 +87,16 @@ class PostController {
       return res.status(200).json({ message: "Post deleted successfully" });
     } catch (error) {
       return res.status(500).json({ error: error });
+    }
+  }
+
+  public async syllablesController(req: Request, res: Response) {
+    const { word } = req.params;
+    try {
+      const { syllables } = await getWordInfo(word);
+      res.json(syllables);
+    } catch (err: any) {
+      res.status(400).json({ error: err.message });
     }
   }
 }
