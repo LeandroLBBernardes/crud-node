@@ -27,7 +27,7 @@ class App {
   private database(): void {
     mongoose
       .connect(
-        `mongodb+srv://leandrolbernardes:I7j75vQSPCCRZVqF@cluster0.5koh9b1.mongodb.net/?retryWrites=true&w=majority`
+        `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.5koh9b1.mongodb.net/?retryWrites=true&w=majority`
       )
       .then(() => {
         console.log("server running on port 3333");
